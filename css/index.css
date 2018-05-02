@@ -1,0 +1,56 @@
+@import "../utils/custom.css";
+.content {
+    margin-left: 125px;
+    height: 60px;
+}
+.content-row1 {
+    display: flex;
+    flex-direction: row;
+}
+.inf_class {
+    font-size: 28px;
+    width: 350px;
+}
+.inf {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+.inf_class_dropdowns {
+    width: 200px;
+    margin: 0 10px;
+}
+.inf_status_dropdowns {
+    width: 200px;
+    margin: 0 120px;
+}
+.btn-inf {
+    font-size: 28px;
+    margin: 0 20px;
+    width: 80%;
+}
+#btn1 #btn2{
+    font-size: 28px;
+}
+.content-row2 {
+    width: 1150px;
+}
+.inf-title {
+    font-size: 24px;
+    color: #444;
+    margin: auto;
+    width: 90%;
+}
+.col-1 {
+     margin: 8px 10px 8px 200px;
+ }
+.col-2 {
+    margin: 8px 10px;
+}
+.col-3 {
+    margin: 8px 10px;
+}
+.col-4 {
+    margin: 8px 0;
+}
+

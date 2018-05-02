@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update Information</title>
+    <link rel="stylesheet" href="../utils/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/update_information.css">
+    <script type="text/javascript" src="../utils/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../utils/bootstrap.min.js"></script>
+</head>
+<body>
+    <header id="header"></header>
+    <div class="content container">
+        <from role="from" id="from">
+            <div id="table">
+                <table>
+                    <tr>
+                        <td class="row1-col1" style="white-space:nowrap; ">请选择资讯类型：</td>
+                        <td class="row1-col2">
+                            <input type="text" name="" class="inf-class">
+                        </td>
+                        <td class="row1-col3" >请输入作者名字：</td>
+                        <td class="row1-col4" >
+                            <input type="text" name="author-name" class="author-name" placeholder="2-5个字">
+                        </td>
+                        <td class="row1-col5">请输入标签名称：</td>
+                        <td class="row1-col6">
+                            <input type="text" name="label" class="label" placeholder="如：美女/美食">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row2-col1">是否推送该条资讯：</td>
+                        <td class="row2-col2" >
+                            <radio><label for=""></label></radio>
+                            <!--<input type="text" class="inf-class">-->
+                        </td>
+                        <td class="row2-col3">上传主图：</td>
+                        <td class="row2-col4">
+                            <input type="button" class="" value="点击上传" >
+                        </td>
+                        <td class="row2-col5">上传轮播图：</td>
+                        <td class="row2-col6" >
+                            <input type="button" class="" value="点击上传">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="essay">
+                <div class="title" >
+                    文章标题
+                    <input type="text" class="essay-title" name="essay-title" placeholder="不超过25个字">
+                </div>
+                <div class="content">
+                    文章内容
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </from>
+    </div>
+
+    <footer id="footer"></footer>
+<!--/* javascript documents */-->
+    <script type="text/javascript" src="../utils/globalURL.js"></script>
+    <script type="text/javascript" src="../js/update_information.js"></script>
+</body>
+</html>

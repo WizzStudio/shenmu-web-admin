@@ -1,0 +1,81 @@
+body {
+    font-family: Arial,sans-serif;
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+}
+.header {
+    background-color: #EFF4FA;
+    height: 72px;
+    width: 100%;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background-color: #36363d;
+    border-top: solid 6px #00a3cf;
+    margin-top: 60px;
+    padding: 20px 0;
+    text-align: center;
+}
+.left-top {
+    font-size: 28px;
+    padding: 15px 20px;
+    color: #3979B7;
+    font-weight: bold;
+}
+.introduce {
+    position: absolute;
+    top: 175px;
+    left: 490px;
+}
+.introduce_row1 {
+    /*position: absolute;*/
+    font-weight: bold;
+    font-size: 28px;
+    color: #3979B7;
+    width: 200px;
+    height: 50px;
+}
+.introduce_row2 {
+    /*position: absolute;*/
+    font-size: 13px;
+    width: 200px;
+    height: 90px;
+}
+.login_box {
+    position: absolute;
+    border: 1px solid;
+    top: 200px;
+    left: 1280px;
+    width: 350px;
+    height: 400px;
+}
+.login_box1 {
+    font-size: 18px;
+    height: 60px;
+    padding: 20px;
+    text-align: center;
+    background-color: #F9FBFE;
+}
+.login_box2 {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 15px;
+}
+.login_box3 {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 15px;
+}
+.login_box4 {
+    margin-left: 35px;
+    font-size: 15px;
+}
+.login_box5 {
+    width: 80%;
+    margin-left: 35px;
+    font-size: 20px;
+}

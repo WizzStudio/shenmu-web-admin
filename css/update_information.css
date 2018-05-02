@@ -1,0 +1,21 @@
+@import "../utils/custom.css";
+
+#table {
+    position: relative;
+    left: -200px;
+    top: 10px;
+}
+td {
+    white-space:nowrap;
+    font-size: 24px;
+    height: 80px;
+}
+#essay {
+    position: relative;
+    font-size: 24px;
+    margin: 20px;
+}
+.essay-title {
+    margin: 0 20px;
+    width: 600px;
+}
