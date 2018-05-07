@@ -8,123 +8,76 @@
     <title>Update Information</title>
     <link rel="stylesheet" href="../utils/bootstrap.min.css">
     <link rel="stylesheet" href="../css/update_information.css">
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
     <script type="text/javascript" src="../utils/jquery.js"></script>
-    <script type="text/javascript" src="../utils/jquery.hotkeys.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../utils/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../utils/bootstrap-wysiwyg.js"></script>
+    <script type="text/javascript" charset="utf-8" src="ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="ueditor.all.min.js"> </script>
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="lang/zh-cn/zh-cn.js"></script>
+
+    <style type="text/css">
+        div #essay-editor {
+            width:100%;
+        }
+    </style>
 </head>
 <body>
-    <header id="header"></header>
-    <div class="content container">
-        <from role="from" id="from">
-            <div id="table">
-                <table>
-                    <tr>
-                        <td class="row1-col1" style="white-space:nowrap; ">请选择资讯类型：</td>
-                        <td class="row1-col2">
-                            <input type="text" name="" class="inf-class">
-                        </td>
-                        <td class="row1-col3" >请输入作者名字：</td>
-                        <td class="row1-col4" >
-                            <input type="text" name="author-name" class="author-name" placeholder="2-5个字">
-                        </td>
-                        <td class="row1-col5">请输入标签名称：</td>
-                        <td class="row1-col6">
-                            <input type="text" name="label" class="label" placeholder="如：美女/美食">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="row2-col1">是否推送该条资讯：</td>
-                        <td class="row2-col2" >
-                            <input type="radio" class="inf-class" name="radio-value">勾选推送
-                            <input type="radio" class="inf-class" name="radio-value" checked>不勾选
-                        </td>
-                        <td class="row2-col3">上传主图：</td>
-                        <td class="row2-col4">
-                            <input type="button" class="" value="点击上传" >
-                        </td>
-                        <td class="row2-col5">上传轮播图：</td>
-                        <td class="row2-col6" >
-                            <input type="button" class="" value="点击上传">
-                        </td>
-                    </tr>
-                </table>
+<header id="header"></header>
+<div class="container content">
+    <from role="from" id="from">
+        <div id="table">
+            <table>
+                <tr>
+                    <td class="row1-col1" >资讯类型：</td>
+                    <td class="row1-col2">
+                        <input type="text" name="inf-class" class="inf-class" placeholder="">
+                    </td>
+                    <td class="row1-col3" >作者名字：</td>
+                    <td class="row1-col4" >
+                        <input type="text" name="author-name" class="author-name" placeholder="2-5字">
+                    </td>
+                    <td class="row1-col5">标签名称：</td>
+                    <td class="row1-col6">
+                        <input type="text" name="label" class="label" placeholder="如：要闻">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row2-col1">是否推送资讯：</td>
+                    <td class="row2-col2" >
+                        <input type="radio" class="inf-class-radio" name="radio-value" value="yes">推送
+                        <input type="radio" class="inf-class-radio" name="radio-value" value="no" checked>不推送
+                    </td>
+                    <td class="row2-col3">上传主图：</td>
+                    <td class="row2-col4">
+                        <input type="button" class="btn btn-info" value="点击上传" >
+                    </td>
+                    <td class="row2-col5">上传轮播图：</td>
+                    <td class="row2-col6" >
+                        <input type="button" class="btn btn-info" value="点击上传">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="essay">
+            <div class="title" >
+                文章标题:
+                <input type="text" class="essay-title" name="essay-title" placeholder="不超过25字">
             </div>
-            <div id="essay">
-                <div class="title" >
-                    文章标题:
-                    <input type="text" class="essay-title" name="essay-title" placeholder="不超过25个字">
-                </div>
-                <div class="content">
-                    文章内容:
-                    <div class="container">
-                        <div id="alerts"></div>
-                        <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
-                            <div class="btn-group">
-                                <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
-                                    <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
-                                    <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="icon-bold"></i></a>
-                                <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="icon-italic"></i></a>
-                                <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="icon-strikethrough"></i></a>
-                                <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="icon-underline"></i></a>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="icon-list-ul"></i></a>
-                                <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="icon-list-ol"></i></a>
-                                <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="icon-indent-left"></i></a>
-                                <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="icon-indent-right"></i></a>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
-                                <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a>
-                                <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="icon-align-right"></i></a>
-                                <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="icon-link"></i></a>
-                                <div class="dropdown-menu input-append">
-                                    <input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
-                                    <button class="btn" type="button">Add</button>
-                                </div>
-                                <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="icon-cut"></i></a>
-                            </div>
 
-                            <div class="btn-group">
-                                <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
-                                <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
-                                <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
-                            </div>
-                            <!--<input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech=""> 语音识别-->
-                        </div>
-                        <div id="editor">
-
-                        </div>
-                    </div>
+            <div class="essay-content">
+                <div id="essay-editor">
+                    <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
                 </div>
             </div>
-        </from>
-    </div>
-
+        </div>
+        <div id="send-btn">
+            <button type="button" class="btn btn-info" style="width: 80px;">上传</button>
+        </div>
+    </from>
+</div>
     <footer id="footer"></footer>
-<!--/* javascript documents */-->
-    <script type="text/javascript" src="../utils/globalURL.js"></script>
+        <!--/* javascript documents */-->
+        <script type="text/javascript" src="../utils/globalURL.js"></script>
     <script type="text/javascript" src="../js/update_information.js"></script>
 </body>
 </html>

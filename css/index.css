@@ -1,56 +1,120 @@
-@import "../utils/custom.css";
-.content {
-    margin-left: 125px;
-    height: 60px;
+/*公共样式!*@import "../utils/custom.css";*!*/
+body {
+    font-family: Arial,sans-serif;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
+
+a {
+    font-size: 20px;
+}
+/*a:link {color: #FF0000}		!* 未访问的链接 *!*/
+a:visited {color: #00FF00}	/* 已访问的链接 */
+a:hover {color: #00F}	/* 鼠标移动到链接上 */
+/*a:active {color: #0000FF}*/
+.header {
+    background-color: #EFF4FA;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.content {
+    min-height: 100%;
+    /*margin-bottom: -50px;*/
+}
+
+.left-top {
+    font-size: 28px;
+    padding: 10px 20px;
+    color: #3979B7;
+    font-weight: bold;
+}
+.right-top {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    text-align: center;
+    margin: 0 30px;
+}
+.container {
+    padding-left: 80px;
+    padding-right: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    /*background-color: darkgray;*/
+    background-color: #EFF4FA;
+}
+
+.content {
+    min-height: calc(100vh - 70px);
+    margin-bottom: 200px;
+}
+
 .content-row1 {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
-.inf_class {
-    font-size: 28px;
-    width: 350px;
+
+.inf-class {
+    white-space: nowrap;
+    font-size: 20px;
+    padding: 10px ;
+    padding-left: 55px;
 }
-.inf {
-    margin: auto;
-    width: 80%;
-    padding: 10px;
-}
+
 .inf_class_dropdowns {
-    width: 200px;
+    width: 260px;
     margin: 0 10px;
 }
 .inf_status_dropdowns {
-    width: 200px;
-    margin: 0 120px;
+    width: 260px;
+    margin: 0 10px;
 }
 .btn-inf {
-    font-size: 28px;
+    font-size: 20px;
     margin: 0 20px;
-    width: 80%;
-}
-#btn1 #btn2{
-    font-size: 28px;
-}
-.content-row2 {
-    width: 1150px;
-}
-.inf-title {
-    font-size: 24px;
-    color: #444;
-    margin: auto;
-    width: 90%;
-}
-.col-1 {
-     margin: 8px 10px 8px 200px;
- }
-.col-2 {
-    margin: 8px 10px;
-}
-.col-3 {
-    margin: 8px 10px;
-}
-.col-4 {
-    margin: 8px 0;
+    width: 60%;
 }
 
+.content-row2 {
+    /*width: 1150px;*/
+    padding:  80px;
+}
+/*.inf-title {*/
+    /*font-size: 20px;*/
+    /*color: #444;*/
+    /*margin: auto;*/
+    /*width: 90%;*/
+/*}*/
+.col-1 {
+     margin-right: 150px;
+    margin-left: 60px;
+ }
+/*.col-2 {*/
+    /*margin: 8px 10px;*/
+/*}*/
+/*.col-3 {*/
+    /*margin: 8px 10px;*/
+/*}*/
+/*.col-4 {*/
+    /*margin: 8px 0;*/
+/*}*/
+
+.footer{
+    position: relative;
+    /*height: 50px;*/
+    /*margin-top: -50px;*/
+    width: 100%;
+    color: white;
+    background-color: #36363d;
+    border-top: solid 6px #00a3cf;
+    /*margin-top: 60px;*/
+    padding: 20px 0;
+    text-align: center;
+}

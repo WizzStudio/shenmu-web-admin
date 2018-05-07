@@ -2,8 +2,8 @@ const header = `
     <div class= "header">
         <div class="left-top">神木app管理后台</div>
         <div class="right-top">
-            <button id="btn1" class="btn btn-primary" style="font-size: 28px">上传新资讯</button>
-            <button id="btn2" class="btn btn-primary" style="font-size: 28px">App资讯列表</button>
+            <button  class="btn btn-primary ">上传新资讯</button>
+            <button  class="btn btn-primary">App资讯列表</button>
         </div>
     </div>
 `;
@@ -17,41 +17,114 @@ $(function(){
     $("footer").html(footer);
 });
 
+//实例化编辑器
+//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+var ue = UE.getEditor('editor');
 
-$(function(){
-    function initToolbarBootstrapBindings() {
-        var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier',
-                'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
-                'Times New Roman', 'Verdana'],
-            fontTarget = $('[title=Font]').siblings('.dropdown-menu');
-        $.each(fonts, function (idx, fontName) {
-            fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
-        });
-        $('a[title]').tooltip({container:'body'});
-        $('.dropdown-menu input').click(function() {return false;})
-            .change(function () {$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');})
-            .keydown('esc', function () {this.value='';$(this).change();});
-        $('[data-role=magic-overlay]').each(function () {
-            var overlay = $(this), target = $(overlay.data('target'));
-            overlay.css('opacity', 0).css('position', 'absolute').offset(target.offset()).width(target.outerWidth()).height(target.outerHeight());
-        });
-        if ("onwebkitspeechchange"  in document.createElement("input")) {
-            var editorOffset = $('#editor').offset();
-            $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+function isFocus(e){
+    alert(UE.getEditor('editor').isFocus());
+    UE.dom.domUtils.preventDefault(e)
+}
+function setblur(e){
+    UE.getEditor('editor').blur();
+    UE.dom.domUtils.preventDefault(e)
+}
+function insertHtml() {
+    var value = prompt('插入html代码', '');
+    UE.getEditor('editor').execCommand('insertHtml', value)
+}
+function createEditor() {
+    enableBtn();
+    UE.getEditor('editor');
+}
+function getAllHtml() {
+    alert(UE.getEditor('editor').getAllHtml())
+}
+function getContent() {
+    var arr = [];
+    arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+    arr.push("内容为：");
+    arr.push(UE.getEditor('editor').getContent());
+    alert(arr.join("\n"));
+    console.log(arr);
+}
+function getPlainTxt() {
+    var arr = [];
+    arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+    arr.push("内容为：");
+    arr.push(UE.getEditor('editor').getPlainTxt());
+    alert(arr.join('\n'))
+}
+function setContent(isAppendTo) {
+    var arr = [];
+    arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+    UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+    alert(arr.join("\n"));
+}
+function setDisabled() {
+    UE.getEditor('editor').setDisabled('fullscreen');
+    disableBtn("enable");
+}
+
+function setEnabled() {
+    UE.getEditor('editor').setEnabled();
+    enableBtn();
+}
+
+function getText() {
+    //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+    var range = UE.getEditor('editor').selection.getRange();
+    range.select();
+    var txt = UE.getEditor('editor').selection.getText();
+    alert(txt)
+}
+
+function getContentTxt() {
+    var arr = [];
+    arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+    arr.push("编辑器的纯文本内容为：");
+    arr.push(UE.getEditor('editor').getContentTxt());
+    alert(arr.join("\n"));
+    console.log(arr);
+}
+function hasContent() {
+    var arr = [];
+    arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+    arr.push("判断结果为：");
+    arr.push(UE.getEditor('editor').hasContents());
+    alert(arr.join("\n"));
+}
+function setFocus() {
+    UE.getEditor('editor').focus();
+}
+function deleteEditor() {
+    disableBtn();
+    UE.getEditor('editor').destroy();
+}
+function disableBtn(str) {
+    var div = document.getElementById('btns');
+    var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+    for (var i = 0, btn; btn = btns[i++];) {
+        if (btn.id == str) {
+            UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
         } else {
-            $('#voiceBtn').hide();
+            btn.setAttribute("disabled", "true");
         }
-    };
-    function showErrorAlert (reason, detail) {
-        var msg='';
-        if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
-        else {
-            console.log("error uploading file", reason, detail);
-        }
-        $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+
-            '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
-    };
-    initToolbarBootstrapBindings();
-    $('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
-    window.prettyPrint && prettyPrint();
-});
+    }
+}
+function enableBtn() {
+    var div = document.getElementById('btns');
+    var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+    for (var i = 0, btn; btn = btns[i++];) {
+        UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+    }
+}
+
+function getLocalData () {
+    alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
+}
+
+function clearLocalData () {
+    UE.getEditor('editor').execCommand( "clearlocaldata" );
+    alert("已清空草稿箱")
+}

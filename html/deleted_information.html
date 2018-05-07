@@ -5,20 +5,76 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Delete Information</title>
-    <!--/* css documents */-->
+    <title>Deleted Information</title>
     <link rel="stylesheet" href="../utils/bootstrap.min.css">
     <link rel="stylesheet" href="../css/deleted_information.css">
-</head>
-<body>
-    <header id="header"></header>
-
-    <footer id="footer"></footer>
-
-<!--/* javascript documents */-->
     <script type="text/javascript" src="../utils/jquery.js"></script>
     <script type="text/javascript" src="../utils/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../utils/globalURL.js"></script>
+    <script type="text/javascript" charset="utf-8" src="ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="ueditor.all.min.js"> </script>
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="lang/zh-cn/zh-cn.js"></script>
+
+    <style type="text/css">
+        div #essay-editor {
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+<header id="header"></header>
+<div class="container content">
+    <from role="from" id="from">
+        <div id="table">
+            <table>
+                <tr>
+                    <td class="row1-col1" >资讯类型：</td>
+                    <td class="row1-col2">
+                        <input type="text" name="inf-class" class="inf-class">
+                    </td>
+                    <td class="row1-col3" >作者名字：</td>
+                    <td class="row1-col4" >
+                        <input type="text" name="author-name" class="author-name">
+                    </td>
+                    <td class="row1-col5">标签名称：</td>
+                    <td class="row1-col6">
+                        <input type="text" name="label" class="label">
+                    </td>
+                </tr>
+                <!--<tr>-->
+                    <!--<td class="row2-col1">是否推送资讯：</td>-->
+                    <!--<td class="row2-col2" >-->
+                        <!--<input type="radio" class="inf-class-radio" name="radio-value" value="yes">推送-->
+                        <!--<input type="radio" class="inf-class-radio" name="radio-value" value="no" checked>不推送-->
+                    <!--</td>-->
+                    <!--<td class="row2-col3">上传主图：</td>-->
+                    <!--<td class="row2-col4">-->
+                        <!--<input type="button" class="btn btn-info" value="点击上传" >-->
+                    <!--</td>-->
+                    <!--<td class="row2-col5">上传轮播图：</td>-->
+                    <!--<td class="row2-col6" >-->
+                        <!--<input type="button" class="btn btn-info" value="点击上传">-->
+                    <!--</td>-->
+                <!--</tr>-->
+            </table>
+        </div>
+        <div id="essay">
+            <div class="title" >
+                文章标题:
+                <input type="text" class="essay-title" name="essay-title" placeholder="不超过25字">
+            </div>
+
+            <div class="essay-content">
+                <div id="essay-editor">
+                    <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+                </div>
+            </div>
+        </div>
+    </from>
+</div>
+    <footer id="footer"></footer>
+        <!--/* javascript documents */-->
+        <script type="text/javascript" src="../utils/globalURL.js"></script>
     <script type="text/javascript" src="../js/deleted_information.js"></script>
 </body>
 </html>

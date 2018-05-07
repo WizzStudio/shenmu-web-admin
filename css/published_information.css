@@ -1,0 +1,100 @@
+
+body {
+    font-family: Arial,sans-serif;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+a {
+    font-size: 20px;
+}
+.header {
+    width: 100%;
+    background-color: #EFF4FA;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.left-top {
+    font-size: 28px;
+    padding: 10px 20px;
+    color: #3979B7;
+    font-weight: bold;
+}
+
+.right-top {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    text-align: center;
+    margin: 0 30px;
+}
+
+.container {
+    padding-right: 80px;
+    padding-left: 80px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0;
+    /*background-color: darkgray;*/
+    background-color: #EFF4FA;
+}
+
+.content {
+    /*margin-left: 225px;*/
+    min-height: calc(100vh - 70px);
+    margin-bottom: 200px;
+}
+.footer{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    color: white;
+    background-color: #36363d;
+    border-top: solid 6px #00a3cf;
+    /*margin-top: 60px;*/
+    padding: 20px 0;
+    text-align: center;
+}
+
+#table {
+    position: relative;
+    /*left: -100px;*/
+    top: 10px;
+    margin-top: 25px;
+}
+td {
+    white-space:nowrap;
+    font-size: 20px;
+    height: 80px;
+}
+.inf-class , .author-name, .label  {
+    width: 200px;
+}
+.row2-col2, .row2-col4, .row2-col6 {
+    width: 200px;
+}
+#essay {
+    position: relative;
+    /*left: 10px;*/
+    font-size: 20px;
+    margin-top: 25px;
+}
+.title {
+    margin: 40px 0;
+}
+
+.essay-title{
+    margin: 0 12px;
+    width: 700px;
+}
+ #send-btn {
+     position: relative;
+     float: right;
+     top: 10px;
+ }

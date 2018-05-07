@@ -1,9 +1,6 @@
 body {
     font-family: Arial,sans-serif;
-    width: 1920px;
-    height: 1080px;
     position: relative;
-    /*font-size: 28px;*/
 }
 a {
     font-size: 28px;

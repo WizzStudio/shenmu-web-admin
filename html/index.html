@@ -15,40 +15,40 @@
 </head>
 <body>
     <header id="header"></header>
-    <div class="content">
-        <div class="content-row1">
-            <div class="inf_class"><div class="inf">请选择资讯的类型:</div></div>
+    <div class="container content">
+        <div class="container content-row1">
+            <span class="inf-class">选择资讯类型:</span>
             <div class="dropdown inf_class_dropdowns">
-                <button type="button" class="btn dropdown-toggle btn-inf" id="dropdownMenu1"
+                <button type="button" class="btn dropdown-toggle btn-inf" id="dropdownMenu"
                         data-toggle="dropdown"  >
                         资讯类型
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu" aira-labelledby="dropdownMenu1">
+                <ul class="dropdown-menu" role="menu" aira-labelledby="dropdownMenu">
                     <li role="presentation">
-                        <a id="1" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">政务公开</a>
+                        <a id="0" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">政务公开</a>
                     </li>
                     <li role="presentation">
-                        <a id="2" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this); return false;">新闻中心</a>
+                        <a id="1" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this); return false;">新闻中心</a>
                     </li>
                     <li role="presentation">
-                        <a id="3" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">热门活动</a>
+                        <a id="2" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">热门活动</a>
                     </li>
                     <li role="presentation">
-                        <a id="4" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">智慧旅游</a>
+                        <a id="3" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">智慧旅游</a>
                     </li>
                     <li role="presentation">
-                        <a id="5" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">神木"历史渊源"</a>
+                        <a id="4" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">神木"历史渊源"</a>
                     </li>
                 </ul>
             </div>
             <div class="dropdown inf_status_dropdowns">
-                <button type="button" class="btn dropdown-toggle btn-inf" id="dropdownMenu1"
+                <button type="button" class="btn dropdown-toggle btn-inf" id="dropdownMenu"
                         data-toggle="dropdown" >
                     资讯状态
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu" aira-labelledby="dropdownMenu1">
+                <ul class="dropdown-menu" role="menu" aira-labelledby="dropdownMenu">
                     <li role="presentation">
                         <a id="online" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">在线上</a>
                     </li>
@@ -73,9 +73,13 @@
                     <span class="inf-title"></span>
                 </div>
             </div>
-            <hr style="border-bottom: #6f42c1 1px solid;margin: 0 10px 0 80px;">
+            <hr style="border-bottom: #6f42c1 1px solid;margin: 10px;">
+            <div class="essay-list">
+
+            </div>
         </div>
     </div>
+
     <footer id="footer"></footer>
     <!--/* javascript documents */-->
     <script type="text/javascript" src="../utils/globalURL.js"></script>

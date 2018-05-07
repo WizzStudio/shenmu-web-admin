@@ -11,45 +11,41 @@
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-        <header id="header">
-            <div class="header">
-                <div class="left-top">神木app管理后台</div>
-            </div>
-        </header>
-        <div id="content">
-            <div class="introduce">
-                <div class="introduce_row1">神木App</div>
-                <div class="introduce_row2">便捷管理发布神木资讯，<br> 打造神木智慧城市。</div>
-            </div>
-            <div class="login_box">
-                <form class="form-horizontal" role="form">
-                    <div class="form-group login_box1">
-                        管理员登录
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control login_box2" placeholder="请输入账号">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control login_box3" placeholder="请输入密码">
-                    </div>
-                    <div class="form-group">
-                        <div class="checkbox ">
-                            <label>
-                                <input type="checkbox" class="login_box4">请记住我
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary login_box5">登录</button>
-                    </div>
-                </form>
-            </div>
+    <header class="header">
+        <span class="left-top">神木app管理后台</span>
+    </header>
+    <div class="container">
+        <div class="introduce">
+            <div class="introduce_row1">神木App</div>
+            <div class="introduce_row2">便捷管理发布神木资讯，<br> 打造神木智慧城市。</div>
         </div>
-        <footer id="footer">
-            <div class="footer">
-                <span>版权所有 神木市政府 &copy Copyright 2018</span>
-            </div>
-        </footer>
+        <div class="login_box">
+            <form class="form-horizontal" role="form" >
+                <div class="form-group login_box1">
+                    管理员登录
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control login_box2" name="username" id="username" placeholder="请输入账号">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control login_box3" name="password" id="password" placeholder="请输入密码">
+                </div>
+                <div class="form-group">
+                    <div class="checkbox ">
+                        <label>
+                            <input type="checkbox" class="login_box4" name="remember" id="remember" value="1">请记住我
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary login_box5" onclick="login()">登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <span>版权所有 神木市政府 &copy Copyright 2018</span>
+    </footer>
 <!--/* javascript documents */-->
     <script type="text/javascript" src="../utils/jquery.js"></script>
     <script type="text/javascript" src="../utils/bootstrap.min.js"></script>
