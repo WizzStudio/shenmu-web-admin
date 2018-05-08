@@ -17,8 +17,8 @@ function login() {
             contentType: 'application/json; charset=utf-8',
             success: function(res,status,xhr) {
                 if(res.status == 0){
-                    var token = xhr.getResponseHeader('authorization');
-                    // console.log(token);
+                    // let token = xhr.getResponseHeader('authorization');
+                    let token = res.data.optVal;
                     localStorage.setItem('verification',token);
                     window.location.href = 'index.html';
                 } else {

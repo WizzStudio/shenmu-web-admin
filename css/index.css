@@ -11,7 +11,7 @@ a {
     font-size: 20px;
 }
 /*a:link {color: #FF0000}		!* 未访问的链接 *!*/
-a:visited {color: #00FF00}	/* 已访问的链接 */
+/*a:visited {color: #00FF00}	!* 已访问的链接 *!*/
 a:hover {color: #00F}	/* 鼠标移动到链接上 */
 /*a:active {color: #0000FF}*/
 .header {
@@ -41,6 +41,7 @@ a:hover {color: #00F}	/* 鼠标移动到链接上 */
     margin: 0 30px;
 }
 .container {
+    position: relative;
     padding-left: 80px;
     padding-right: 80px;
     margin-left: auto;
@@ -54,7 +55,9 @@ a:hover {color: #00F}	/* 鼠标移动到链接上 */
     min-height: calc(100vh - 70px);
     margin-bottom: 200px;
 }
-
+.dropdown-menu {
+    background-color: #DDDDDD;
+}
 .content-row1 {
     display: flex;
     flex-direction: row;
@@ -84,28 +87,40 @@ a:hover {color: #00F}	/* 鼠标移动到链接上 */
 
 .content-row2 {
     /*width: 1150px;*/
-    padding:  80px;
+    padding:  50px;
 }
-/*.inf-title {*/
-    /*font-size: 20px;*/
-    /*color: #444;*/
-    /*margin: auto;*/
-    /*width: 90%;*/
-/*}*/
-.col-1 {
-     margin-right: 150px;
-    margin-left: 60px;
+.col-1, .col-2, .col-3, .col-4 {
+    text-align: center;
  }
-/*.col-2 {*/
-    /*margin: 8px 10px;*/
-/*}*/
-/*.col-3 {*/
-    /*margin: 8px 10px;*/
-/*}*/
-/*.col-4 {*/
-    /*margin: 8px 0;*/
-/*}*/
+.row {
+    margin: 10px 0;
+}
+.view {
+    text-decoration: none;
+    color: #3979B7;
+}
+.pagination {
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+}
+#pagers {
+    float: bottom;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
+}
+.pagination ul li {
+    text-align: center;
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0 20px;
+}
+.pagination ul li a {
+    /*background: #999999 ;*/
+    text-decoration: none;
+}
 .footer{
     position: relative;
     /*height: 50px;*/

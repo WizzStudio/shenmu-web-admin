@@ -15,61 +15,62 @@
 </head>
 <body>
     <header id="header"></header>
+
     <div class="container content">
         <div class="container content-row1">
             <span class="inf-class">选择资讯类型:</span>
             <div class="dropdown inf_class_dropdowns">
-                <button type="button" class="btn dropdown-toggle btn-inf" id="dropdownMenu"
-                        data-toggle="dropdown"  >
+                <button type="button" class="btn dropdown-toggle btn-inf" name="btn-val1" id="dropdownMenu"
+                        data-toggle="dropdown"  value="资讯类型">
                         资讯类型
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu" aira-labelledby="dropdownMenu">
                     <li role="presentation">
-                        <a id="0" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">政务公开</a>
+                        <a id=0 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">政务公开</a>
                     </li>
                     <li role="presentation">
-                        <a id="1" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this); return false;">新闻中心</a>
+                        <a id=1 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this); return false;">新闻中心</a>
                     </li>
                     <li role="presentation">
-                        <a id="2" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">热门活动</a>
+                        <a id=4 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">热门活动</a>
                     </li>
                     <li role="presentation">
-                        <a id="3" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">智慧旅游</a>
+                        <a id=2 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">智慧旅游</a>
                     </li>
                     <li role="presentation">
-                        <a id="4" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">神木"历史渊源"</a>
+                        <a id=3 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">历史渊源</a>
                     </li>
                 </ul>
             </div>
             <div class="dropdown inf_status_dropdowns">
-                <button type="button" class="btn dropdown-toggle btn-inf" id="dropdownMenu"
-                        data-toggle="dropdown" >
+                <button type="button" class="btn dropdown-toggle btn-inf" name="btn-val2" id="dropdownMenu1"
+                        data-toggle="dropdown">
                     资讯状态
-                    <span class="caret"></span>
+                    <!--<span class="caret"></span>-->
                 </button>
-                <ul class="dropdown-menu" role="menu" aira-labelledby="dropdownMenu">
+                <ul class="dropdown-menu" role="menu" aira-labelledby="dropdownMenu1">
                     <li role="presentation">
-                        <a id="online" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">在线上</a>
+                        <a id="online" role="menuitem" tabindex="-1" href="#" onclick="menuBtn1(this);return false;">在线上</a>
                     </li>
                     <li role="presentation">
-                        <a id="delete" role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this); return false;">已删除</a>
+                        <a id="delete" role="menuitem" tabindex="-1" href="#" onclick="menuBtn1(this); return false;">已删除</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="content-row2 container">
             <div class="row">
-                <div class="col-sm-3 col-md-3 col-1">
+                <div class="col-sm-5 col-md-5 col-1">
                     <span class="inf-title">标题</span>
                 </div>
-                <div class="col-sm-3 col-md-3 col-2">
+                <div class="col-sm-2 col-md-2 col-2">
                     <span class="inf-title" >作者</span>
                 </div>
                 <div class="col-sm-3 col-md-3 col-3" >
-                    <span class="inf-title" >上传日期</span>
+                    <span class="inf-title" >日期</span>
                 </div>
-                <div class="col-sm-3 col-md-3 col-4">
+                <div class="col-sm-2 col-md-2 col-4">
                     <span class="inf-title"></span>
                 </div>
             </div>
@@ -78,8 +79,13 @@
 
             </div>
         </div>
+        <div class="pagination" >
+            <ul class="pager" id="pagers">
+                <li class="previous"><a href="#" onclick="prev(); return false;" disabled>&laquo; Prev</a></li>
+                <li class="next"><a href="#" onclick="next(); return false;" disabled>Next &raquo;</a></li>
+            </ul>
+        </div>
     </div>
-
     <footer id="footer"></footer>
     <!--/* javascript documents */-->
     <script type="text/javascript" src="../utils/globalURL.js"></script>

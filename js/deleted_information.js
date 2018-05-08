@@ -2,8 +2,8 @@ const header = `
     <div class= "header">
         <div class="left-top">神木app管理后台</div>
         <div class="right-top">
-            <button  class="btn btn-primary ">已删除资讯</button>
-            <button  class="btn btn-primary">App资讯列表</button>
+            <button  class="btn btn-primary" disabled>已删除资讯</button>
+            <button  class="btn btn-primary" type="button" onclick="routing();">App资讯列表</button>
         </div>
     </div>
 `;
@@ -16,7 +16,9 @@ $(function(){
     $("header").html(header);
     $("footer").html(footer);
 });
-
+function routing() {
+    window.location.href = 'index.html';
+}
 
 //实例化编辑器
 //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
