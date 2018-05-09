@@ -1,26 +1,67 @@
-const header = `
-    <div class= "header">
-        <div class="left-top">神木app管理后台</div>
-        <div class="right-top">
-            <button  class="btn btn-primary" disabled>上传新资讯</button>
-            <button  class="btn btn-primary" type="button" onclick="routing();">App资讯列表</button>
-        </div>
-    </div>
-`;
-const footer = `
-    <div class="footer">
-        <span>版权所有 神木市政府 &copy 2018</span>
-    </div>
-`;
-$(function(){
-    $("header").html(header);
-    $("footer").html(footer);
-});
+
+var type;
+var author;
+var tags;
+var title;
+var isPush;
+var image;
+var carousel;
+var content;
 
 function routing() {
     window.location.href = 'index.html';
 }
-
+function menuBtn(which) {
+    typevalue = which.getAttribute('id');
+    let typeValue = document.getElementById(typevalue).innerText;
+    document.getElementById("dropdownMenu").innerText = typeValue;
+}
+function getCurrentData() {
+    for( let i = 0; i < 5; i++) {
+        if (document.getElementById("dropdownMenu").innerText === document.getElementById(i + '').innerText)
+            type = i;
+    }
+    let radio = document.getElementsByName("radio-value");
+    for(let i = 0; i < radio.length; i++){
+        if(radio[i].checked === true)
+            isPush = radio[i].value;
+    }
+    author = document.getElementById("author-name").value;
+    tags = document.getElementById("label").value;
+    title = document.getElementById("essay-title").value;
+    // image = ;
+    // carousel = ;
+    content = ue.getPlainTxt();//带有格式的纯文本
+}
+function send() {
+    getCurrentData();
+    $.ajax({
+        type: 'POST',
+        url: baseURL + updateNews,
+        headers: {
+            'Authorization': localStorage.getItem('verification')
+        },
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify({
+            'type': type,
+            'author': author,
+            'tags': tags,
+            'title': title,
+            'isPush': isPush,
+            // 'image': image,
+            // 'carousel': carousel,
+            // 'content':
+        }),
+        success: function(res) {
+            if(res.status === 0) {
+                window.location.href = 'index.html';
+            }
+            if(res.status === 1) {
+                console.log(res.message);
+            }
+        }
+    });
+}
 //实例化编辑器
 //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
 var ue = UE.getEditor('editor');

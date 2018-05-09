@@ -73,28 +73,47 @@ td {
     font-size: 20px;
     height: 80px;
 }
-.inf-class , .author-name, .label  {
-    width: 200px;
+.dropdown-menu {
+    background-color: #DDDDDD;
 }
-.row2-col2, .row2-col4, .row2-col6 {
-    width: 200px;
+.inf-class , .author-name, .label  {
+    width: 150px;
+}
+
+.row1-col2, .row1-col4, .row1-col6, .row1-col2, .row1-col4, .row2-col6 {
+    width: 150px;
+}
+.row1-col1, .row1-col3, .row1-col5, .row2-col1, .row2-col3, .row2-col5 {
+    width: 100px;
+    text-align: right;
 }
 #essay {
     position: relative;
     /*left: 10px;*/
     font-size: 20px;
     margin-top: 25px;
+    /*left: 2%;*/
 }
 .title {
+    position: relative;
+    left: 8%;
     margin: 40px 0;
 }
 
 .essay-title{
     margin: 0 12px;
-    width: 700px;
+    width: 70%;
+}
+.essay-content {
+    position: relative;
+    left: -2%;
 }
  #send-btn {
      position: relative;
      float: right;
      top: 10px;
+ }
+ .notice {
+     position: relative;
+     left: -10%;
  }

@@ -8,6 +8,7 @@
     <title>Update Information</title>
     <link rel="stylesheet" href="../utils/bootstrap.min.css">
     <link rel="stylesheet" href="../css/update_information.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../utils/jquery.js"></script>
     <script type="text/javascript" src="../utils/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="ueditor.config.js"></script>
@@ -22,46 +23,76 @@
     </style>
 </head>
 <body>
-<header id="header"></header>
+<!--<header id="header"></header>-->
+<div class= "header">
+    <div class="left-top">神木app管理后台</div>
+    <div class="right-top">
+        <button  class="btn btn-primary" disabled>上传新资讯</button>
+        <button  class="btn btn-primary" type="button" onclick="routing();">App资讯列表</button>
+    </div>
+</div>
 <div class="container content">
     <from role="from" id="from">
         <div id="table">
-            <table>
-                <tr>
-                    <td class="row1-col1" >资讯类型：</td>
-                    <td class="row1-col2">
-                        <input type="text" name="inf-class" class="inf-class" placeholder="">
-                    </td>
-                    <td class="row1-col3" >作者名字：</td>
-                    <td class="row1-col4" >
-                        <input type="text" name="author-name" class="author-name" placeholder="2-5字">
-                    </td>
-                    <td class="row1-col5">标签名称：</td>
-                    <td class="row1-col6">
-                        <input type="text" name="label" class="label" placeholder="如：要闻">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="row2-col1">是否推送资讯：</td>
-                    <td class="row2-col2" >
-                        <input type="radio" class="inf-class-radio" name="radio-value" value="yes">推送
-                        <input type="radio" class="inf-class-radio" name="radio-value" value="no" checked>不推送
-                    </td>
-                    <td class="row2-col3">上传主图：</td>
-                    <td class="row2-col4">
-                        <input type="button" class="btn btn-info" value="点击上传" >
-                    </td>
-                    <td class="row2-col5">上传轮播图：</td>
-                    <td class="row2-col6" >
-                        <input type="button" class="btn btn-info" value="点击上传">
-                    </td>
-                </tr>
-            </table>
+        <table class="container">
+            <tr>
+                <td class="row1-col1">资讯类型：</td>
+                <td class="row1-col2">
+                    <div class="dropdown inf_class_dropdowns">
+                        <button type="button" class="btn dropdown-toggle btn-inf" name="btn-val1" id="dropdownMenu"
+                                data-toggle="dropdown"  value="资讯类型">
+                            资讯类型
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aira-labelledby="dropdownMenu">
+                            <li role="presentation">
+                                <a id=0 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">政务公开</a>
+                            </li>
+                            <li role="presentation">
+                                <a id=1 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this); return false;">新闻中心</a>
+                            </li>
+                            <li role="presentation">
+                                <a id=4 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">热门活动</a>
+                            </li>
+                            <li role="presentation">
+                                <a id=2 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">智慧旅游</a>
+                            </li>
+                            <li role="presentation">
+                                <a id=3 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">历史渊源</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="row1-col3" >作者名字：</td>
+                <td class="row1-col4" >
+                    <input type="text" name="author-name" class="author-name" id="author-name">
+                </td>
+                <td class="row1-col5">标签名称：</td>
+                <td class="row1-col6">
+                    <input type="text" name="label" class="label" id="label">
+                </td>
+            </tr>
+            <tr>
+                <td class="row2-col1">是否推送：</td>
+                <td class="row2-col2" >
+                    <input type="radio" class="inf-class-radio" name="radio-value" value="true">推送
+                    <input type="radio" class="inf-class-radio" name="radio-value" value="false" checked>不推送
+                </td>
+                <td class="row2-col3">上传主图：</td>
+                <td class="row2-col4">
+                    <input type="button" class="btn btn-info" value="点击上传">
+                </td>
+                <td class="row2-col5">上传轮播图：</td>
+                <td class="row2-col6" >
+                    <input type="button" class="btn btn-info" value="点击上传">
+                </td>
+            </tr>
+        </table>
         </div>
         <div id="essay">
             <div class="title" >
                 文章标题:
-                <input type="text" class="essay-title" name="essay-title" placeholder="不超过25字">
+                <input type="text" class="essay-title" name="essay-title" id="essay-title" placeholder="不超过25字">
             </div>
 
             <div class="essay-content">
@@ -71,11 +102,22 @@
             </div>
         </div>
         <div id="send-btn">
-            <button type="button" class="btn btn-info" style="width: 80px;">上传</button>
+            <button type="button" class="btn btn-info" style="width: 80px;" onclick="send();">上传</button>
         </div>
     </from>
+    <div class="notice">
+        <span> <pre>
+        注意事项：
+        1、主图长宽比1：1
+        2、轮播图长宽比375：104（轮播图长宽比一定要符合，否则会出现失真）
+        3、图片大小上限2M
+        4、标签数量上限5个，标签栏最多15个字 </pre> </span>
+    </div>
 </div>
-    <footer id="footer"></footer>
+
+<div class="footer">
+    <span>版权所有 神木市政府 &copy 2018</span>
+</div>
         <!--/* javascript documents */-->
         <script type="text/javascript" src="../utils/globalURL.js"></script>
     <script type="text/javascript" src="../js/update_information.js"></script>

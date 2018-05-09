@@ -1,21 +1,4 @@
-const header = `
-    <div class= "header">
-        <div class="left-top">神木app管理后台</div>
-        <div class="right-top">
-            <button id="btn1" class="btn btn-primary" type="button" onclick="routing();">上传新资讯</button>
-            <button id="btn2" class="btn btn-primary" disabled>App资讯列表</button>
-        </div>
-    </div>
-`;
-const footer = `
-    <div class="footer">
-        <span>版权所有 神木市政府 &copy 2018</span>
-    </div>
-`;
-$(function(){
-    $("header").html(header);
-    $("footer").html(footer);
-});
+
 function routing() {
     window.location.href = 'update_information.html';
 }
@@ -43,7 +26,7 @@ function proceedData(data){
         title[i] = data[i].title;
         author[i] = data[i].author;
         time[i] = data[i].createTime.substring(0,10);
-        id[i] = i;
+        id[i] = data[i].id;
     }
 }
 
@@ -72,7 +55,7 @@ function ajaxRequest() {
                     tempInf = `
                         <div class="row">
                             <div class="col-sm-5 col-md-5 col-1">
-                                <span class="inf-title">${title[i]}</span>
+                                <span class="inf-title">&raquo; ${title[i]}</span>
                             </div>
                             <div class="col-sm-2 col-md-2 col-2">
                                 <span class="inf-title" >${author[i]}</span>
@@ -98,7 +81,6 @@ function menuBtn(which) {
     let typeValue = document.getElementById(type).innerText;
     document.getElementById("dropdownMenu").innerText = typeValue;
     if(document.getElementById("dropdownMenu1").innerText !== val2 && document.getElementById("dropdownMenu").innerText !== val1){
-        // alert("请您先选择好资讯状态！")
         pageNum = 1;
         ajaxRequest(); //向后台getNews
     }
@@ -112,7 +94,6 @@ function menuBtn1(which) {
     if(status === 'delete')
          state = 1;
     if(document.getElementById("dropdownMenu1").innerText !== val2 && document.getElementById("dropdownMenu").innerText !== val1){
-        // alert("请您先选择好资讯状态！")
         pageNum = 1;
         ajaxRequest(); //向后台getNews
     }

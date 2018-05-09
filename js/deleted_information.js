@@ -1,24 +1,40 @@
-const header = `
-    <div class= "header">
-        <div class="left-top">神木app管理后台</div>
-        <div class="right-top">
-            <button  class="btn btn-primary" disabled>已删除资讯</button>
-            <button  class="btn btn-primary" type="button" onclick="routing();">App资讯列表</button>
-        </div>
-    </div>
-`;
-const footer = `
-    <div class="footer">
-        <span>版权所有 神木市政府 &copy 2018</span>
-    </div>
-`;
-$(function(){
-    $("header").html(header);
-    $("footer").html(footer);
-});
+
 function routing() {
     window.location.href = 'index.html';
 }
+//获取文章id
+var thisUrl = document.URL;
+var id = thisUrl.split("=")[1];
+//渲染数据
+function renderData(data) {
+    for( let i = 0; i < 5; i++) {
+        if (data.type === i)
+            document.getElementById("dropdownMenu").innerText = document.getElementById(i + '').innerText;
+    }
+    document.getElementById("author-name").value = data.author;
+    document.getElementById("label").value = data.tags;
+    document.getElementById("essay-title").value = data.title;
+    ue.innerText = data.content;
+}
+
+//获取文章详情
+$(function(){
+    $.ajax({
+        type: 'GET',
+        url: baseURL + checkDetails + id,
+        headers: {
+            'Authorization': localStorage.getItem('verification')
+        },
+        success: function (res) {
+            if(res.status === 0){
+                renderData(res.data);
+            }
+        }
+    });
+
+});
+
+
 
 //实例化编辑器
 //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
