@@ -1,4 +1,4 @@
-/*           api documents               */
+
 let baseURL = "http://shenmu.zhengsj.top";
 let loginAdmin = "/sys/admin/login";         //登录接口
 let updateNews = "/sys/news";                //发布资讯

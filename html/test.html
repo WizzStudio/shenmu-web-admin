@@ -9,15 +9,111 @@
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript" charset="utf-8" src="../utils/jquery.js"></script>
-
+    <style type="text/css">
+        .file {
+            position: relative;
+            display: inline-block;
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            border-radius: 4px;
+            padding: 4px 12px;
+            overflow: hidden;
+            color: #1E88C7;
+            text-decoration: none;
+            text-indent: 0;
+            line-height: 20px;
+        }
+        .file input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+        }
+        .file:hover {
+            background: #AADFFD;
+            border-color: #78C3F3;
+            color: #004974;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-<input type="file">
-<!--<div id ="a">`${date}`</div>-->
-<!--<script>-->
-    <!--let date = "12";-->
-    <!--let ab = `<div >${date}</div>`;-->
-    <!--$("#a").append(ab);-->
-<!--</script>-->
+<form action="" method="post" enctype="multipart/form-data">
+    <!--<input type="file" id="myfileinput" multiple>-->
+    <input type="file" id="myfileinput" size="3" multiple >
+</form>
+<button onclick="a();">show</button>
+<script type="text/javascript">
+    // fileInput is an HTML input element: <input type="file" id="myfileinput" multiple>
+    function a() {
+        var fileInput = document.getElementById("myfileinput");
+
+        // files is a FileList object (similar to NodeList)
+        var files = fileInput.files;
+        var file;
+        // loop through files
+        for (var i = 0; i < files.length; i++) {
+            // get item
+            // file = files.item(i);
+            file = files[i];
+            console.log(file.name);
+        }
+    }
+    // function show() {
+    //     console.log(document.querySelector("#file").files);
+    //     console.log(document.querySelector("#fileId2").files);
+    // }
+    <!--<script type="text/javascript" charset="utf-8" >-->
+    <!--function fileChange(target) {-->
+    <!--var fileSize = 0;-->
+    <!--if (isIE && !target.files) {-->
+    <!--var filePath = target.value;-->
+    <!--var fileSystem = new ActiveXObject("Scripting.FileSystemObject");-->
+    <!--var file = fileSystem.GetFile (filePath);-->
+    <!--fileSize = file.Size;-->
+    <!--} else {-->
+    <!--fileSize = target.files[0].size;-->
+    <!--}-->
+    <!--var size = fileSize / 1024;-->
+    <!--if(size>2000){-->
+    <!--alert("附件不能大于2M");-->
+    <!--target.value="";-->
+    <!--return-->
+    <!--}-->
+    <!--var name=target.value;-->
+    <!--var fileName = name.substring(name.lastIndexOf(".")+1).toLowerCase();-->
+    <!--if(fileName !="xls" && fileName !="xlsx"){-->
+    <!--alert("请选择execl格式文件上传！");-->
+    <!--target.value="";-->
+    <!--return-->
+    <!--}-->
+    <!--}-->
+    <!--function filefujianChange(target) {-->
+    <!--var fileSize = 0;-->
+    <!--if (isIE && !target.files) {-->
+    <!--var filePath = target.value;-->
+    <!--var fileSystem = new ActiveXObject("Scripting.FileSystemObject");-->
+    <!--var file = fileSystem.GetFile (filePath);-->
+    <!--fileSize = file.Size;-->
+    <!--} else {-->
+    <!--fileSize = target.files[0].size;-->
+    <!--}-->
+    <!--var size = fileSize / 1024;-->
+    <!--if(size>2000){-->
+    <!--alert("附件不能大于2M");-->
+    <!--target.value="";-->
+    <!--return-->
+    <!--}-->
+    <!--var name=target.value;-->
+    <!--var fileName = name.substring(name.lastIndexOf(".")+1).toLowerCase();-->
+    <!--if(fileName !="jpg" && fileName !="jpeg" && fileName !="pdf" && fileName !="png" && fileName !="dwg" && fileName !="gif" ){-->
+    <!--alert("请选择图片格式文件上传(jpg,png,gif,dwg,pdf,gif等)！");-->
+    <!--target.value="";-->
+    <!--return-->
+    <!--}-->
+    <!--}-->
+</script>
+
 </body>
 </html>

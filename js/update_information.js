@@ -4,10 +4,10 @@ var author;
 var tags;
 var title;
 var isPush;
-var image;
-var carousel;
+// var image;
+// var carousel;
 var content;
-
+var summary;
 function routing() {
     window.location.href = 'index.html';
 }
@@ -16,6 +16,29 @@ function menuBtn(which) {
     let typeValue = document.getElementById(typevalue).innerText;
     document.getElementById("dropdownMenu").innerText = typeValue;
 }
+// function upload1(){
+//     $('#form1').submit();
+//     // alert('success');
+// }
+// $(function(){
+//     $("#form1").ajaxForm(function(data){
+//         alert('success');
+//         console.log(JSON.parse(data).url);
+//         image = baseURL + JSON.parse(data).url;
+//     });
+// });
+//
+// function upload2(){
+//     $('#form2').submit();
+//     // alert('success');
+// }
+// $(function(){
+//     $("#form2").ajaxForm(function(data){
+//         console.log(JSON.parse(data).url);
+//         carousel = baseURL + JSON.parse(data).url;
+//     });
+// });
+
 function getCurrentData() {
     for( let i = 0; i < 5; i++) {
         if (document.getElementById("dropdownMenu").innerText === document.getElementById(i + '').innerText)
@@ -29,9 +52,10 @@ function getCurrentData() {
     author = document.getElementById("author-name").value;
     tags = document.getElementById("label").value;
     title = document.getElementById("essay-title").value;
-    // image = ;
-    // carousel = ;
-    content = ue.getPlainTxt();//带有格式的纯文本
+    // image = image;
+    // carousel = carousel;
+    content = UE.getEditor('editor').getContent();//带有格式的纯文本
+    summary = UE.getEditor('editor').getPlainTxt().substring(0,20);
 }
 function send() {
     getCurrentData();
@@ -48,9 +72,10 @@ function send() {
             'tags': tags,
             'title': title,
             'isPush': isPush,
-            // 'image': image,
-            // 'carousel': carousel,
-            // 'content':
+            'image': image,
+            'carousel': carousel,
+            'content': content,
+            'summary': summary
         }),
         success: function(res) {
             if(res.status === 0) {
@@ -62,6 +87,8 @@ function send() {
         }
     });
 }
+
+
 //实例化编辑器
 //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
 var ue = UE.getEditor('editor');

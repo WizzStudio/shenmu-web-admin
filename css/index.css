@@ -121,6 +121,10 @@ a:hover {color: #00F}	        /* 鼠标移动到链接上 */
     /*background: #999999 ;*/
     text-decoration: none;
 }
+.pagenum {
+    width: 6px;
+    padding-top: 2px;
+}
 .footer{
     position: relative;
     /*height: 50px;*/

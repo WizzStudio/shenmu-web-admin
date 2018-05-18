@@ -19,21 +19,21 @@
         <div class="left-top">神木app管理后台</div>
         <div class="right-top">
             <button id="btn1" class="btn btn-primary" type="button" onclick="routing();">上传新资讯</button>
+            &nbsp;&nbsp;
             <button id="btn2" class="btn btn-primary" disabled>App资讯列表</button>
         </div>
     </div>
     <div class="container content">
         <div class="container content-row1">
             <span class="inf-class">选择资讯类型:</span>
-            <div class="dropdown inf_class_dropdowns">
-                <button type="button" class="btn dropdown-toggle btn-inf" name="btn-val1" id="dropdownMenu"
-                        data-toggle="dropdown"  value="资讯类型">
+            <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="资讯类型" name="btn-val1">
                         资讯类型
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu" aira-labelledby="dropdownMenu">
-                    <li role="presentation">
-                        <a id=0 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this);return false;">政务公开</a>
+                <ul class="dropdown-menu" aira-labelledby="dropdownMenu">
+                    <li>
+                        <a id=0 href="#" onclick="menuBtn(this);return false;">政务公开</a>
                     </li>
                     <li role="presentation">
                         <a id=1 role="menuitem" tabindex="-1" href="#" onclick="menuBtn(this); return false;">新闻中心</a>
@@ -50,7 +50,7 @@
                 </ul>
             </div>
             <div class="dropdown inf_status_dropdowns">
-                <button type="button" class="btn dropdown-toggle btn-inf" name="btn-val2" id="dropdownMenu1"
+                <button type="button" class="btn btn-info dropdown-toggle" name="btn-val2" id="dropdownMenu1"
                         data-toggle="dropdown">
                     资讯状态
                     <!--<span class="caret"></span>-->
@@ -88,6 +88,7 @@
         <div class="pagination" >
             <ul class="pager" id="pagers">
                 <li class="previous"><a href="#" onclick="prev(); return false;" disabled>&laquo; Prev</a></li>
+                <li><span class="page" id="page">1</span></li>
                 <li class="next"><a href="#" onclick="next(); return false;" disabled>Next &raquo;</a></li>
             </ul>
         </div>

@@ -1,5 +1,4 @@
 
-
 //实例化编辑器
 var ue = UE.getEditor('editor');
 // 获取文章id
@@ -11,24 +10,47 @@ var author;
 var tags;
 var title;
 var isPush;
-var image;
-var carousel;
+// var image;
+// var carousel;
 var content;
+var summary;
 // 修改资讯类型
 function menuBtn(which) {
     typevalues = which.getAttribute('id');
     let typeValue = document.getElementById(typevalues).innerText;
     document.getElementById("dropdownMenu").innerText = typeValue;
 }
+
+// function upload1(){
+//     $('#form1').submit();
+//
+// }
+// function upload2(){
+//     $('#form2').submit();
+// }
+// $(function(){
+//     $("#form1").ajaxForm(function(data){
+//         console.log(JSON.parse(data).url);
+//     });
+//     $("#form2").ajaxForm(function(data){
+//         console.log(JSON.parse(data).url);
+//     });
+// });
+
 function renderData(data) {
     for( let i = 0; i < 5; i++) {
         if (data.type === i)
             document.getElementById("dropdownMenu").innerText = document.getElementById(i + '').innerText;
     }
+    let radio = document.getElementsByName("radio-value");
+    for(let i = 0; i < radio.length; i++){
+        if(radio[i].value === data.isPush)
+            radio[i].checked = data.isPush;
+    }
     document.getElementById("author-name").value = data.author;
     document.getElementById("label").value = data.tags;
     document.getElementById("essay-title").value = data.title;
-    ue.innerText = data.content;
+    UE.getEditor('editor').setContent(data.content, true);
 }
 function getCurrentData() {
     for( let i = 0; i < 5; i++) {
@@ -43,13 +65,13 @@ function getCurrentData() {
     author = document.getElementById("author-name").value;
     tags = document.getElementById("label").value;
     title = document.getElementById("essay-title").value;
-    // image = ;
-    // carousel = ;
-    content = ue.getPlainTxt();//带有格式的纯文本
+    // image = image;s
+    // carousel = carousel;
+    content = UE.getEditor('editor').getContent();
+    summary = UE.getEditor('editor').getContentTxt().substring(0,20);
 }
 
 $(function(){
-
     $.ajax({
         type: 'GET',
         url: baseURL + checkDetails + id,
@@ -58,7 +80,6 @@ $(function(){
         },
         success: function (res) {
             if(res.status === 0){
-                // console.log(res.data);
                 renderData(res.data);
             }
         }
@@ -90,19 +111,23 @@ function modifyEssay() {
         headers: {
             'Authorization': localStorage.getItem('verification')
         },
-        data: {
+        contentType: 'application/json',
+        data: JSON.stringify({
             'type': type,
             'author': author,
             'tags': tags,
             'isPush': isPush, //需要进行区别 先不修改
             'image': image,   //可能会进行修改
-            // 'carousel': ,
-            // 'title': ,
-            'content': content //带有格式的纯文本
-        },
+            'carousel': carousel,
+            'title': title,
+            'content': content,
+            'summary': summary
+        }),
         success: function(res) {
             if(res.status === 0) {
                 window.location.href = 'index.html';
+                // console.log(image);
+                // console.log(carousel);
             }
             if(res.status === 1) {
                 alert(res.message);
@@ -110,7 +135,6 @@ function modifyEssay() {
         }
     })
 }
-
 //实例化编辑器
 //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
 // var ue = UE.getEditor('editor');
@@ -218,7 +242,8 @@ function getLocalData () {
     alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
 }
 
+/*
 function clearLocalData () {
     UE.getEditor('editor').execCommand( "clearlocaldata" );
     alert("已清空草稿箱")
-}
+}*/
