@@ -10,8 +10,7 @@ var author;
 var tags;
 var title;
 var isPush;
-// var image;
-// var carousel;
+
 var content;
 var summary;
 // 修改资讯类型
@@ -20,22 +19,6 @@ function menuBtn(which) {
     let typeValue = document.getElementById(typevalues).innerText;
     document.getElementById("dropdownMenu").innerText = typeValue;
 }
-
-// function upload1(){
-//     $('#form1').submit();
-//
-// }
-// function upload2(){
-//     $('#form2').submit();
-// }
-// $(function(){
-//     $("#form1").ajaxForm(function(data){
-//         console.log(JSON.parse(data).url);
-//     });
-//     $("#form2").ajaxForm(function(data){
-//         console.log(JSON.parse(data).url);
-//     });
-// });
 
 function renderData(data) {
     for( let i = 0; i < 5; i++) {
@@ -70,8 +53,11 @@ function getCurrentData() {
     content = UE.getEditor('editor').getContent();
     summary = UE.getEditor('editor').getContentTxt().substring(0,20);
 }
-
 $(function(){
+    if(!localStorage.getItem('verification')){
+        alert("登录缓存已失效，即将转入登录界面！");
+        window.location.href = 'login.html';
+    }
     $.ajax({
         type: 'GET',
         url: baseURL + checkDetails + id,
@@ -138,7 +124,6 @@ function modifyEssay() {
 //实例化编辑器
 //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
 // var ue = UE.getEditor('editor');
-
 function isFocus(e){
     alert(UE.getEditor('editor').isFocus());
     UE.dom.domUtils.preventDefault(e)
@@ -196,7 +181,6 @@ function getText() {
     var txt = UE.getEditor('editor').selection.getText();
     alert(txt)
 }
-
 function getContentTxt() {
     var arr = [];
     arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
@@ -242,8 +226,3 @@ function getLocalData () {
     alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
 }
 
-/*
-function clearLocalData () {
-    UE.getEditor('editor').execCommand( "clearlocaldata" );
-    alert("已清空草稿箱")
-}*/

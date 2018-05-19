@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
+    <title>首页</title>
     <!--/* css documents */-->
     <link rel="stylesheet" href="../utils/bootstrap.min.css">
     <link rel="stylesheet" href="../css/index.css">
@@ -16,7 +16,7 @@
 <body>
     <!--<header id="header"></header>-->
     <div class= "header">
-        <div class="left-top">神木app管理后台</div>
+        <div class="left-top"><a href="index.html" class="logo">神木app管理后台</a></div>
         <div class="right-top">
             <button id="btn1" class="btn btn-primary" type="button" onclick="routing();">上传新资讯</button>
             &nbsp;&nbsp;
@@ -87,9 +87,9 @@
         </div>
         <div class="pagination" >
             <ul class="pager" id="pagers">
-                <li class="previous"><a href="#" onclick="prev(); return false;" disabled>&laquo; Prev</a></li>
+                <li class="previous"><a href="#" onclick="prev(); return false;">&laquo; Prev</a></li>
                 <li><span class="page" id="page">1</span></li>
-                <li class="next"><a href="#" onclick="next(); return false;" disabled>Next &raquo;</a></li>
+                <li class="next"><a href="#" onclick="next(); return false;">Next &raquo;</a></li>
             </ul>
         </div>
     </div>

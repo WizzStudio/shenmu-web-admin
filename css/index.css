@@ -12,7 +12,7 @@ a {
 }
 /*a:link {color: #FF0000}		!* 未访问的链接 *!*/
 /*a:visited {color: #00FF00}	!* 已访问的链接 *!*/
-a:hover {color: #00F}	        /* 鼠标移动到链接上 */
+/*a:hover {color: #00F}	        !* 鼠标移动到链接上 *!*/
 /*a:active {color: #0000FF}*/
 .header {
     background-color: #EFF4FA;
@@ -25,7 +25,9 @@ a:hover {color: #00F}	        /* 鼠标移动到链接上 */
     min-height: 100%;
     /*margin-bottom: -50px;*/
 }
-
+a.logo {
+    text-decoration: none;
+}
 .left-top {
     font-size: 28px;
     padding: 10px 20px;

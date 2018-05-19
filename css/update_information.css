@@ -73,11 +73,15 @@ td {
     font-size: 20px;
     height: 80px;
 }
-/*.dropdown-menu {*/
-    /*background-color: #DDDDDD;*/
-/*}*/
+.dropdown-menu {
+    background-color: #DDDDDD;
+}
+a.logo {
+    text-decoration: none;
+}
 .inf-class , .author-name, .label  {
     width: 150px;
+
 }
 
 .row1-col2, .row1-col4, .row1-col6, .row1-col2, .row1-col4, .row2-col6 {
@@ -103,6 +107,7 @@ td {
 .essay-title{
     margin: 0 12px;
     width: 70%;
+    /*border-radius: 3px;*/
 }
 .essay-content {
     position: relative;

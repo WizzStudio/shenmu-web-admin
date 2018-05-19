@@ -1,3 +1,9 @@
+$(function () {
+    if(!localStorage.getItem('verification')){
+        alert("登录缓存已失效，即将转入登录界面！");
+        window.location.href = 'login.html';
+    }
+});
 
 function routing() {
     window.location.href = 'update_information.html';

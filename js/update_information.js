@@ -4,10 +4,16 @@ var author;
 var tags;
 var title;
 var isPush;
-// var image;
-// var carousel;
+
 var content;
 var summary;
+
+$(function () {
+    if(!localStorage.getItem('verification')){
+        alert("登录缓存已失效，即将转入登录界面！");
+        window.location.href = 'login.html';
+    }
+});
 function routing() {
     window.location.href = 'index.html';
 }
@@ -15,29 +21,7 @@ function menuBtn(which) {
     typevalue = which.getAttribute('id');
     let typeValue = document.getElementById(typevalue).innerText;
     document.getElementById("dropdownMenu").innerText = typeValue;
-}
-// function upload1(){
-//     $('#form1').submit();
-//     // alert('success');
-// }
-// $(function(){
-//     $("#form1").ajaxForm(function(data){
-//         alert('success');
-//         console.log(JSON.parse(data).url);
-//         image = baseURL + JSON.parse(data).url;
-//     });
-// });
-//
-// function upload2(){
-//     $('#form2').submit();
-//     // alert('success');
-// }
-// $(function(){
-//     $("#form2").ajaxForm(function(data){
-//         console.log(JSON.parse(data).url);
-//         carousel = baseURL + JSON.parse(data).url;
-//     });
-// });
+};
 
 function getCurrentData() {
     for( let i = 0; i < 5; i++) {

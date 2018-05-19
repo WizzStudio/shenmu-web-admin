@@ -19,6 +19,12 @@ function renderData(data) {
 
 //获取文章详情
 $(function(){
+    $(function () {
+        if(!localStorage.getItem('verification')){
+            alert("登录缓存已失效，即将转入登录界面！");
+            window.location.href = 'login.html';
+        }
+    });
     $.ajax({
         type: 'GET',
         url: baseURL + checkDetails + id,

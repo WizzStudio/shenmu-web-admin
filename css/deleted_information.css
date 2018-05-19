@@ -61,7 +61,9 @@ a {
     padding: 20px 0;
     text-align: center;
 }
-
+a.logo {
+    text-decoration: none;
+}
 #table {
     position: relative;
     /*left: -100px;*/

@@ -34,7 +34,9 @@ a {
     text-align: center;
     margin: 0 30px;
 }
-
+a.logo {
+    text-decoration: none;
+}
 .container {
     padding-right: 80px;
     padding-left: 80px;

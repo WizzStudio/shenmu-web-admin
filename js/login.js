@@ -1,9 +1,16 @@
+$(function () {
+    document.getElementById("username").value = localStorage.getItem('username');
+    document.getElementById("password").value = localStorage.getItem('password');
+});
 
 function login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
-    // let remember = document.getElementById("remember").value;
-
+    let remember = document.getElementById("remember");
+    if(remember.checked === true){
+        localStorage.username = username;
+        localStorage.password = password;
+    }
     if(username===""||password===""){
         alert("用户名及密码不能为空，请您重新输入！");
     }else{
