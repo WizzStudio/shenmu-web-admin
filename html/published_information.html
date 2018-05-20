@@ -8,6 +8,8 @@
     <title>资讯详情</title>
     <link rel="stylesheet" href="../utils/bootstrap.min.css">
     <link rel="stylesheet" href="../css/published_information.css">
+    <link rel="stylesheet" href="../Font-Awesome-3.2.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Font-Awesome-3.2.1/css/font-awesome-ie7.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../utils/jquery.js"></script>
     <script type="text/javascript" src="../utils/jquery.form.js"></script>
@@ -65,11 +67,11 @@
                         </td>
                         <td class="row1-col3" >作者名字：</td>
                         <td class="row1-col4" >
-                            <input type="text" name="author-name" class="author-name" id="author-name" placeholder="2-5字">
+                            <input type="text" name="author-name" class="author-name" id="author-name" placeholder="2-5字" required>
                         </td>
                         <td class="row1-col5">标签名称：</td>
                         <td class="row1-col6">
-                            <input type="text" name="label" class="label" id="label" placeholder="上限10字 最多3个标签">
+                            <input type="text" name="label" class="label" id="label" placeholder="上限10字 最多3个标签" required>
                         </td>
                     </tr>
                     <tr>
@@ -84,6 +86,7 @@
                                 <div class="file">上传文件
                                     <input type="file" name="upfile" id="file1" onchange="upload1();">
                                 </div>
+                                <i id="flag1"></i>
                             </form>
                         </td>
                         <td class="row2-col5">上传轮播图：</td>
@@ -92,6 +95,7 @@
                                 <div class="file">上传文件
                                     <input type="file" name="upfile" id="file2" onchange="upload2();">
                                 </div>
+                                <i id="flag2"></i>
                             </form>
                         </td>
                     </tr>
@@ -133,16 +137,16 @@
         $('#form1').submit();
     }
     function upload2(){
-        $('#form1').submit();
+        $('#form2').submit();
     }
     $(function(){
         $("#form1").ajaxForm(function(data){
-            // console.log(JSON.parse(data).url);
             image = JSON.parse(data).url;
+            $("#flag1").addClass("icon-ok-sign");
         });
         $("#form2").ajaxForm(function(data){
-            // console.log(JSON.parse(data).url);
             carousel = JSON.parse(data).url;
+            $("#flag2").addClass("icon-ok-sign");
         });
     });
 </script>

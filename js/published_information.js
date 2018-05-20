@@ -5,7 +5,7 @@ var ue = UE.getEditor('editor');
 var thisUrl = document.URL;
 var id = thisUrl.split("=")[1];
 
-var type;
+var types = -1;
 var author;
 var tags;
 var title;
@@ -38,7 +38,7 @@ function renderData(data) {
 function getCurrentData() {
     for( let i = 0; i < 5; i++) {
         if (document.getElementById("dropdownMenu").innerText === document.getElementById(i + '').innerText)
-            type = i;
+            types = i;
     }
     let radio = document.getElementsByName("radio-value");
     for(let i = 0; i < radio.length; i++){
@@ -91,35 +91,45 @@ function deleteEssay() {
 }
 function modifyEssay() {
     getCurrentData();
-    $.ajax({
-        type: 'PUT',
-        url: baseURL + submitChange + id,
-        headers: {
-            'Authorization': localStorage.getItem('verification')
-        },
-        contentType: 'application/json',
-        data: JSON.stringify({
-            'type': type,
-            'author': author,
-            'tags': tags,
-            'isPush': isPush, //需要进行区别 先不修改
-            'image': image,   //可能会进行修改
-            'carousel': carousel,
-            'title': title,
-            'content': content,
-            'summary': summary
-        }),
-        success: function(res) {
-            if(res.status === 0) {
-                window.location.href = 'index.html';
-                // console.log(image);
-                // console.log(carousel);
-            }
-            if(res.status === 1) {
-                alert(res.message);
-            }
+        if (types === -1)
+            alert("请先选择资讯类型！");
+        else if (author === '') {
+            alert("请填写作者名称！");
         }
-    })
+        else if (tags === '') {
+            alert("请填写标签名称！");
+        }
+        else if (title === '') {
+            alert("请填写标题栏！");
+        }
+        else if (content === '') {
+            alert("请填写文章内容！");
+        }
+        else
+            $.ajax({
+                type: 'PUT',
+                url: baseURL + submitChange + id,
+                headers: {
+                    'Authorization': localStorage.getItem('verification')
+                },
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    'type': types,
+                    'author': author,
+                    'tags': tags,
+                    'isPush': isPush, //需要进行区别 先不修改
+                    'image': image,   //可能会进行修改
+                    'carousel': carousel,
+                    'title': title,
+                    'content': content,
+                    'summary': summary
+                }),
+                success: function(res) {
+                    if (res.status === 0) {
+                        // window.location.href = 'index.html';
+                    }
+                }
+                })
 }
 //实例化编辑器
 //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
