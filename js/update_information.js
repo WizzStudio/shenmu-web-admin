@@ -58,34 +58,40 @@ function send() {
         alert("请填写文章内容！");
     }
     else
-        $.ajax({
-            type: 'POST',
-            url: baseURL + updateNews,
-            headers: {
-                'Authorization': localStorage.getItem('verification')
-            },
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify({
-                'type': types,
-                'author': author,
-                'tags': tags,
-                'title': title,
-                'isPush': isPush,
-                'image': image,
-                'carousel': carousel,
-                'content': content,
-                'summary': summary
-            }),
-            success: function(res) {
-                if(res.status === 0) {
-                    // window.location.href = 'index.html';
-                    alert(res.data);
+    {
+        let tips = confirm("确定是否上传该条资讯？");
+        if(tips === true)
+            $.ajax({
+                type: 'POST',
+                url: baseURL + updateNews,
+                headers: {
+                    'Authorization': localStorage.getItem('verification')
+                },
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    'type': types,
+                    'author': author,
+                    'tags': tags,
+                    'title': title,
+                    'isPush': isPush,
+                    'image': image,
+                    'carousel': carousel,
+                    'content': content,
+                    'summary': summary
+                }),
+                success: function(res) {
+                    if(res.status === 0) {
+                        alert("上传成功！");
+                        window.location.href = 'index.html';
+                    }
+                    if(res.status === 1) {
+                        alert("上传资讯失败！请仔细查看原因，若原因不明可联系有关工作人员！")
+                    }
                 }
-                if(res.status === 1) {
-                     alert(res.message);
-                }
-            }
-        });
+            });
+        else return false;
+    }
+
 }
 
 

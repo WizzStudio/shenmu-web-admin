@@ -75,7 +75,7 @@
                 </td>
                 <td class="row1-col5">标签名称：</td>
                 <td class="row1-col6">
-                    <input type="text" name="label" class="label" id="label" placeholder="上限10字 最多3个标签">
+                    <input type="text" name="label" class="label" id="label" placeholder="上限10字3个标签">
                 </td>
             </tr>
             <tr>
@@ -124,11 +124,11 @@
         注意事项：
         1、主图长宽比1：1
         2、轮播图推荐长宽比 5：2（轮播图长宽比一定要符合，否则会出现失真）
-        3、图片大小上限2M
-        4、标签上限10个字 用 / 分割
-        5、修改文章时，推送状态不可修改</pre> </span>
+        3、图片大小上限2M,格式限制为 .png, .jpg, .jpeg, .gif, .bmp
+        4、图片上传成功有 ✔ 标志，否则上传失败
+        5、标签上限10个字 用 / 分割
+        6.修改文章时，推送状态不可修改</pre> </span>
     </div>
-
 </div>
 
 <div class="footer">
@@ -145,13 +145,13 @@
     }
     $(function(){
         $("#form1").ajaxForm(function(data){
-             image = JSON.parse(data).url;
-            $("#flag1").addClass("icon-ok-sign");
+                image = JSON.parse(data).url;
+                $("#flag1").addClass("icon-ok-sign");
         });
         $("#form2").ajaxForm(function(data){
-             carousel = JSON.parse(data).url;
-            $("#flag2").addClass("icon-ok-sign");
-        });
+                carousel = JSON.parse(data).url;
+                $("#flag2").addClass("icon-ok-sign");
+        })
     });
 </script>
         <!--/* javascript documents */-->

@@ -66,6 +66,7 @@ $(function(){
         },
         success: function (res) {
             if(res.status === 0){
+                // console.log(res.data);
                 renderData(res.data);
             }
         }
@@ -76,18 +77,26 @@ function routing() {
     window.location.href = 'index.html';
 }
 function deleteEssay() {
-    $.ajax({
-        type: 'DELETE',
-        url: baseURL + deleteInformation + id,
-        headers: {
-            'Authorization': localStorage.getItem('verification')
-        },
-        success: function(res) {
-            if(res.status === 0) {
-                window.location.href = 'index.html';
+    let tips = confirm("确定是否删除该条资讯？");
+    if(tips === true) {
+        $.ajax({
+            type: 'DELETE',
+            url: baseURL + deleteInformation + id,
+            headers: {
+                'Authorization': localStorage.getItem('verification')
+            },
+            success: function (res) {
+                if (res.status === 0) {
+                    alert("删除成功！");
+                    window.location.href = 'index.html';
+                }
+                if(res.status === 1) {
+                    alert("删除资讯失败！请先仔细查看原因，若原因不明可联系有关工作人员！")
+                }
             }
-        }
-    })
+        })
+    }
+    else return false;
 }
 function modifyEssay() {
     getCurrentData();
@@ -105,31 +114,39 @@ function modifyEssay() {
         else if (content === '') {
             alert("请填写文章内容！");
         }
-        else
-            $.ajax({
-                type: 'PUT',
-                url: baseURL + submitChange + id,
-                headers: {
-                    'Authorization': localStorage.getItem('verification')
-                },
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    'type': types,
-                    'author': author,
-                    'tags': tags,
-                    'isPush': isPush, //需要进行区别 先不修改
-                    'image': image,   //可能会进行修改
-                    'carousel': carousel,
-                    'title': title,
-                    'content': content,
-                    'summary': summary
-                }),
-                success: function(res) {
-                    if (res.status === 0) {
-                        // window.location.href = 'index.html';
+        else {
+            let tips = confirm("确定是否修改该条资讯？");
+            if(tips === true)
+                $.ajax({
+                    type: 'PUT',
+                    url: baseURL + submitChange + id,
+                    headers: {
+                        'Authorization': localStorage.getItem('verification')
+                    },
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        'type': types,
+                        'author': author,
+                        'tags': tags,
+                        'isPush': isPush, //需要进行区别 先不修改
+                        'image': image,   //可能会进行修改
+                        'carousel': carousel,
+                        'title': title,
+                        'content': content,
+                        'summary': summary
+                    }),
+                    success: function (res) {
+                        if (res.status === 0) {
+                            alert("修改成功！");
+                            window.location.href = 'index.html';
+                        }
+                        if(res.status === 1) {
+                            alert("修改资讯失败！请仔细查看原因，若原因不明可联系有关工作人员！")
+                        }
                     }
-                }
-                })
+                });
+            else return false;
+        }
 }
 //实例化编辑器
 //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
